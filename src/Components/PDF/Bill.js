@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     color: "#333",
     display: "flex",
     flexDirection: "column",
+    paddingTop: 35,
+    paddingBottom: 65,
+    paddingHorizontal: 35,
+    textAlign: "justify",
   },
   header: {
     fontSize: 14,
@@ -16,7 +20,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     fontWeight: "bold",
     padding: "20px",
-    border: "2px solid",
+    border: "2px solid #000",
   },
   sectionTitle: {
     fontSize: 12,
@@ -39,9 +43,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   fieldContent: {
-    borderBottom: "1px solid #000",
+    // borderBottom: "1px solid #000",
     paddingBottom: 2,
     marginBottom: 8,
+    fontSize: 8, // Smaller font size to prevent wrapping
   },
   boxed: {
     border: "1px solid #000",
@@ -50,7 +55,9 @@ const styles = StyleSheet.create({
   },
   boxFlex: {
     display: "flex",
-    height: "100%",
+    flexGrow: 1,
+    flexDirection: "row",
+    height: "140px",
   },
   boxedSectionOne: {
     border: "1px solid #000",
@@ -61,18 +68,7 @@ const styles = StyleSheet.create({
     border: "1px solid #000",
     borderLeft: "0px",
     width: "25%",
-    padding: 8,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    // marginBottom: 10,
-  },
-  boxedSectionOne2: {
-    border: "1px solid #000",
-    borderLeft: "0px",
-    width: "25%",
-    padding: 8,
+    padding: 0,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -89,25 +85,19 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   table: {
-    display: "flex",
-    // width: "100%",
-    borderStyle: "solid",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: 0,
     borderWidth: 1,
-    padding: 0,
-    flexDirection: "column",
-    borderColor: "#333",
-    // marginBottom: 20,
+    borderColor: "#000",
   },
   tableRow: {
-    // flexDirection: "row",
-    backgroundColor: "#fff",
+    display: 'flex',
+    flexDirection: "row",
+    borderBottomColor: "#000",
     borderBottomWidth: 1,
-
-    // paddingTop: 5,
-    // paddingBottom: 5,
-    display: "flex",
-    width: "100%",
-    // borderColor: "#333",
+    alignItems: "center",
+    fontStyle: "bold",
   },
   tableColHeader: {
     // width: "25%",
@@ -117,91 +107,109 @@ const styles = StyleSheet.create({
     backgroundColor: "#e0e0e0",
     // padding: 5,
     fontWeight: "bold",
+    flexGrow: 1,
+    padding: 0,
+    height: '25px'
   },
   tableCol: {
-    // width: "25%",
     border: "1px solid #000",
     borderTop: "none",
     borderBottom: "none",
     backgroundColor: "#f2f2f2",
-    // padding: 5,
     fontWeight: "bold",
   },
   tableHeader: {
-    // flexDirection: "row",
-    // backgroundColor: "#cccccc",
-    borderBottomWidth: 1,
-    // paddingTop: 5,
-    // paddingBottom: 5,
     display: "flex",
-    width: "100%",
-    // borderColor: "#333",
+    flexDirection: "row",
+    borderBottomColor: "#000",
+    backgroundColor: "#000",
+    borderBottomWidth: 1,
+    alignItems: "center",
+    textAlign: "center",
+    fontStyle: "bold",
+    flexGrow: 1,
   },
 });
 
 const BillOfLadingPDF = () => (
   <Document>
-    <Page size="A4" style={styles.page}>
+    <Page size="A4" style={styles.page} wrap>
       {/* Document Header */}
-      <View style={styles.header}>STRAIGHT BILL OF LADING - SHORT FORM</View>
+      <Text style={styles.header}>STRAIGHT BILL OF LADING - SHORT FORM</Text>
 
       {/* Carrier Information Section */}
-      <View style={styles.boxFlex}>
+      <View style={styles.boxFlex} wrap={false}>
         <View style={styles.boxedSectionOne}>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Carrier Name:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Carrier Name:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
 
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Phone:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Phone:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Carrier Address:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Carrier Address:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Date:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
-              </Text>
-            </View>
-          </View>
-          <View style={styles.row}>
-            <View style={styles.column}>
-              <Text style={styles.fieldLabel}>City:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
-              </Text>
-            </View>
-            <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Province/Postal:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Date:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>SAC:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                City:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>DUNS:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Province/Postal:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
+              </Text>
+            </View>
+          </View>
+          <View style={styles.row}>
+            <View style={styles.column}>
+              <Text style={styles.fieldLabel}>
+                SAC:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
+              </Text>
+            </View>
+            <View style={styles.column}>
+              <Text style={styles.fieldLabel}>
+                DUNS:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
@@ -240,41 +248,51 @@ const BillOfLadingPDF = () => (
         <View style={{ ...styles.boxedSectionOne, width: "50%" }}>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>TO:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                TO:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Consignee:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Consignee:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Address:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Address:{" "}
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>City:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                City:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Province/Postal:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Province/Postal:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
@@ -317,45 +335,55 @@ const BillOfLadingPDF = () => (
         </View>
       </View>
 
-      <View style={styles.boxFlex}>
+      <View style={styles.boxFlex} wrap={false}>
         <View style={{ ...styles.boxedSectionOne, width: "50%" }}>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>FROM:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                FROM:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Shipper:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Shipper:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Address:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Address:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>City:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                City:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Province/Postal:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Province/Postal:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
@@ -387,41 +415,51 @@ const BillOfLadingPDF = () => (
         <View style={{ ...styles.boxedSectionOne, width: "50%" }}>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>FOR PAYMENT SEND BILL TO:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                FOR PAYMENT SEND BILL TO:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Name:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Name:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Address:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Address:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>City:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                City:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
           <View style={styles.row}>
             <View style={styles.column}>
-              <Text style={styles.fieldLabel}>Province/Postal:</Text>
-              <Text style={styles.fieldContent}>
-                __________________________
+              <Text style={styles.fieldLabel}>
+                Province/Postal:
+                <Text style={styles.fieldContent}>
+                  __________________________
+                </Text>
               </Text>
             </View>
           </View>
@@ -437,7 +475,6 @@ const BillOfLadingPDF = () => (
           <View
             style={{
               width: "100%",
-              //   paddingTop: 10,
               paddingBottom: 20,
               display: "flex",
               flexDirection: "column",
@@ -452,12 +489,11 @@ const BillOfLadingPDF = () => (
               width: "50%",
               paddingTop: 2,
               display: "flex",
-              //   flexDirection: "column",
-              height: "10%",
-              paddingLeft: 10,
+              paddingLeft: 4,
               border: "1px solid #000",
               borderLeft: "0px",
               borderBottom: "0px",
+              flexGrow: 1
             }}
           >
             <Text style={styles.fieldLabel}>SID NO.</Text>
@@ -466,16 +502,12 @@ const BillOfLadingPDF = () => (
       </View>
 
       {/* Table Header */}
-      <View style={styles.table}>
+      <View style={styles.table} wrap={false}>
         <View style={styles.tableHeader}>
           <Text
             style={{
               ...styles.tableColHeader,
               width: "10%",
-              textAlign: "center",
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
             }}
           >
             Number Shipping Units
@@ -484,10 +516,6 @@ const BillOfLadingPDF = () => (
             style={{
               ...styles.tableColHeader,
               width: "5%",
-              textAlign: "center",
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
             }}
           >
             *HQ
@@ -496,10 +524,6 @@ const BillOfLadingPDF = () => (
             style={{
               ...styles.tableColHeader,
               width: "55%",
-              textAlign: "center",
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
             }}
           >
             Kinds of Packaging, Description of Articles, Special Marks and
@@ -509,10 +533,6 @@ const BillOfLadingPDF = () => (
             style={{
               ...styles.tableColHeader,
               width: "10%",
-              textAlign: "center",
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
             }}
           >
             Code
@@ -521,10 +541,6 @@ const BillOfLadingPDF = () => (
             style={{
               ...styles.tableColHeader,
               width: "10%",
-              textAlign: "center",
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
             }}
           >
             Weight Subject to Correction
@@ -533,10 +549,6 @@ const BillOfLadingPDF = () => (
             style={{
               ...styles.tableColHeader,
               width: "10%",
-              textAlign: "center",
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
             }}
           >
             Rate
@@ -545,10 +557,6 @@ const BillOfLadingPDF = () => (
             style={{
               ...styles.tableColHeader,
               width: "10%",
-              textAlign: "center",
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
             }}
           >
             Charges
@@ -562,9 +570,10 @@ const BillOfLadingPDF = () => (
           const customStyles = {
             ...styles.tableCol,
             backgroundColor: isOdd ? "#ffffff" : "#e0e0e0",
+            minHeight: "25px",
           };
           return (
-            <View style={{ ...styles.tableRow, height: "25px" }} key={rowIndex}>
+            <View style={{ ...styles.tableRow }} key={rowIndex}>
               <Text
                 style={{
                   ...customStyles,
@@ -625,11 +634,16 @@ const BillOfLadingPDF = () => (
         <View style={styles.row}>
           <View style={styles.column}>
             <Text style={styles.fieldLabel}>Payment Terms:</Text>
+
             <Text style={styles.fieldContent}>□ Prepaid □ Collect</Text>
           </View>
           <View style={styles.column}>
-            <Text style={styles.fieldLabel}>C.O.D. Amount:</Text>
-            <Text style={styles.fieldContent}>__________________________</Text>
+            <Text style={styles.fieldLabel}>
+              C.O.D. Amount:
+              <Text style={styles.fieldContent}>
+                __________________________
+              </Text>
+            </Text>
           </View>
         </View>
       </View>
